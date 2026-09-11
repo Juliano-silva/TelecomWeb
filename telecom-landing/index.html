@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telecom | Consultoria CPF & CNPJ</title>
+<link rel="icon" href="telecom.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+  :root {
+    --roxo: #5B2A86;
+    --roxo-escuro: #3D1B5C;
+    --roxo-claro: #EEEAFA;
+    --branco: #ffffff;
+    --roxo-grad: linear-gradient(135deg, #7A3BB0 0%, #5B2A86 60%, #3D1B5C 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2d2d2d;
+    background: var(--branco);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--branco);
+    box-shadow: 0 2px 12px rgba(91, 42, 134, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--roxo);
+  }
+  .logo img { height: 48px; width: auto; }
+  nav { display: flex; align-items: center; gap: 8px; }
+  nav a { font-size: .85rem; font-weight: 600; color: #555; padding: 6px 10px; border-radius: 8px; white-space: nowrap; transition: color .2s, background .2s; }
+  nav a:hover { color: var(--branco); background: var(--roxo); }
+  nav .btn-whats {
+    background: var(--roxo);
+    color: var(--branco);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: .85rem;
+    font-weight: 700;
+    transition: background .2s, transform .2s;
+  }
+  nav .btn-whats:hover { background: var(--roxo-escuro); transform: translateY(-2px); }
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--roxo); cursor: pointer; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--roxo-grad);
+    color: var(--branco);
+    text-align: center;
+    padding: 90px 20px;
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 20px; }
+  .hero p { font-size: 1.25rem; max-width: 720px; margin: 0 auto 34px; opacity: .95; }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn-branco { background: var(--branco); color: var(--roxo); }
+  .btn-branco:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+  .btn-outline { border: 2px solid var(--branco); color: var(--branco); }
+  .btn-outline:hover { background: rgba(255,255,255,.15); transform: translateY(-2px); }
+
+  /* ===== SEÇÕES ===== */
+  section { padding: 70px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    color: var(--roxo);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .section-sub { text-align: center; color: #555; max-width: 680px; margin: 0 auto 45px; }
+
+  /* Por que nos escolher / O que fazemos grids */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; }
+  .card {
+    background: var(--roxo-claro);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(91,42,134,.2); }
+  .card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+  .card h3 { color: var(--roxo-escuro); margin-bottom: 10px; font-size: 1.15rem; }
+  .card p { color: #444; font-size: .95rem; }
+
+  /* Quem somos */
+  .sobre { background: var(--roxo-claro); }
+  .sobre-box { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .sobre-box img { width: 120px; height: 120px; object-fit: contain; flex-shrink: 0; }
+  .sobre-box p { font-size: 1.08rem; color: #3a3a3a; }
+
+  /* Mercado / estatística */
+  .destaque {
+    background: var(--roxo-grad);
+    color: var(--branco);
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .destaque .ano { font-size: 4rem; font-weight: 900; line-height: 1; }
+  .destaque p { font-size: 1.2rem; margin-top: 12px; opacity: .95; }
+
+  /* Onde estamos */
+  .mapa { background: var(--roxo-claro); text-align: center; }
+  .mapa .lugar { font-size: 1.6rem; font-weight: 800; color: var(--roxo-escuro); margin-top: 8px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--roxo-escuro);
+    color: var(--branco);
+    padding: 50px 20px 30px;
+    text-align: center;
+  }
+  footer .logo { justify-content: center; color: var(--branco); margin-bottom: 18px; }
+  footer .logo img { height: 56px; }
+  footer .footer-info { color: #cfc3e8; max-width: 700px; margin: 0 auto 26px; font-size: .95rem; }
+  .redes { display: flex; gap: 16px; justify-content: center; margin-bottom: 26px; }
+  .redes a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: var(--branco);
+    background: rgba(255,255,255,.12);
+    border-radius: 50%;
+    font-size: 1.35rem;
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .redes a i { line-height: 1; }
+  .redes a:hover { background: var(--branco); color: var(--roxo); transform: translateY(-3px); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; font-size: .85rem; color: #b9aadc; }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width: 800px) {
+    header { padding: 12px 18px; }
+    nav { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--branco); padding: 16px 18px 20px; box-shadow: 0 8px 16px rgba(0,0,0,.12); gap: 8px; align-items: stretch; }
+    nav a { padding: 12px 14px; border-radius: 8px; }
+    nav .btn-whats { text-align: center; padding: 12px 14px; }
+    nav.open { display: flex; }
+    .menu-toggle { display: block; }
+    .hero h1 { font-size: 2rem; }
+    .destaque .ano { font-size: 3rem; }
+    .sobre-box { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="#inicio" class="logo">
+    <img src="telecom.png" alt="Logo Telecom">
+    <span>Telecom</span>
+  </a>
+  <button class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+  <nav id="nav">
+    <a href="#sobre">Quem Somos</a>
+    <a href="#o-que-fazemos">O que Fazemos</a>
+    <a href="#mercado">Mercado</a>
+    <a href="#onde-estamos">Onde Nos Encontrar</a>
+    <a href="#porque">Por Que Nos Escolher</a>
+    <a class="btn-whats" href="https://wa.me/message/VOAHQSVKS7YK01" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero" id="inicio">
+  <h1>Telecomunicações do seu Jeito</h1>
+  <p>Consultoria CPF &amp; CNPJ, planos móveis e fixos, fibra óptica e link dedicado. Tudo em telecom com quem entende do assunto.</p>
+  <div class="hero-actions">
+    <a href="#o-que-fazemos" class="btn btn-branco">O que Fazemos</a>
+    <a href="https://wa.me/message/VOAHQSVKS7YK01" target="_blank" rel="noopener" class="btn btn-outline">Fale Conosco</a>
+  </div>
+</div>
+
+<!-- ===== QUEM SOMOS ===== -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <h2 class="section-title">Quem Somos</h2>
+    <p class="section-sub">Uma empresa de telecomunicações que cuida do seu CPF ou CNPJ do início ao fim.</p>
+    <div class="sobre-box">
+      <img src="telecom.png" alt="Ícone Telecom">
+      <p>
+        Somos uma <strong>empresa de telecomunicações</strong> especializada em
+        <strong>consultoria CPF &amp; CNPJ</strong>, oferecendo <strong>planos móveis e fixos</strong>,
+        <strong>fibra óptica</strong> e <strong>link dedicado</strong>. Também fazemos a
+        <strong>migração de CPF para CNPJ</strong> sem complicação: <strong>tudo em telecom</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O QUE FAZEMOS ===== -->
+<section id="o-que-fazemos">
+  <div class="container">
+    <h2 class="section-title">O que Fazemos</h2>
+    <p class="section-sub">Soluções completas para pessoa física e jurídica.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">&#128187;</div>
+        <h3>Consultoria CPF &amp; CNPJ</h3>
+        <p>Acompanhamento especializado para você escolher o melhor plano, seja pessoa física ou jurídica.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128241;</div>
+        <h3>Planos Móveis e Fixos</h3>
+        <p>Planos de celular e telefonia fixa sob medida para o seu perfil e para sua empresa.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128225;</div>
+        <h3>Fibra Óptica / Link Dedicado</h3>
+        <p>Internet de alta velocidade residencial e link dedicado para empresas com total estabilidade.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128260;</div>
+        <h3>Migração CPF → CNPJ</h3>
+        <p>Transferimos suas linhas para o CNPJ com agilidade e zero burocracia desnecessária.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEMPO DE MERCADO ===== -->
+<div class="destaque" id="mercado">
+  <div class="container">
+    <div class="ano">16 ANOS</div>
+    <p>de mercado em 2026, com experiência e confiança para atender você e sua empresa.</p>
+  </div>
+</div>
+
+<!-- ===== POR QUE NOS ESCOLHER ===== -->
+<section id="porque">
+  <div class="container">
+    <h2 class="section-title">Por Que Nos Escolher</h2>
+    <p class="section-sub">Mais de uma década de experiência aliada a um atendimento próximo e humano.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">&#128200;</div>
+        <h3>16 Anos de Experiência</h3>
+        <p>Uma trajetória consolidada no mercado de telecomunicações desde 2010.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#9989;</div>
+        <h3>Tudo em Telecom</h3>
+        <p>Móvel, fixo, fibra e link dedicado em um só lugar, sem você se perder entre fornecedores.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128119;</div>
+        <h3>Atendimento Especializado</h3>
+        <p>Consultoria personalizada para CPF e CNPJ, do início ao fim da contratação.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128176;</div>
+        <h3>Otimização de Custos</h3>
+        <p>Comparação dos melhores planos para reduzir gastos sem perder qualidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ONDE NOS ENCONTRAR ===== -->
+<section class="mapa" id="onde-estamos">
+  <div class="container">
+    <h2 class="section-title">Onde Nos Encontrar</h2>
+    <p class="section-sub">Estamos prontos para te atender presencialmente ou pelo WhatsApp.</p>
+    <div class="lugar">&#128205; Camboriú</div>
+    <p style="margin-top: 14px; color: #444;">Atendemos Camboriú e região. Fale conosco pelo WhatsApp para mais atendimento.</p>
+    <div style="margin-top: 28px;">
+      <a href="https://wa.me/message/VOAHQSVKS7YK01" target="_blank" rel="noopener" class="btn btn-whats" style="background: var(--roxo); color: var(--branco); padding: 14px 30px; border-radius: 30px; font-weight: 700;">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <a href="#inicio" class="logo">
+      <img src="telecom.png" alt="Logo Telecom">
+      <span>Telecom</span>
+    </a>
+    <p class="footer-info">
+      Telecomunicações — Consultoria CNPJ &amp; CPF, planos móveis e fixos, fibra óptica / link dedicado
+      e migração CPF para CNPJ. Tudo em telecom, com 16 anos de mercado e atendimento em Camboriú.
+    </p>
+    <div class="redes">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/message/VOAHQSVKS7YK01" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <div class="footer-bottom">© 2026 Telecom — Camboriú. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+Crie uma Landing Page da telecom 
+
+Cores a serem usadas são roxo e branco
+
+O que o site precisa:
+
+Header
+Vai ficar o Icone C:\Users\Adm\Pictures\Programação\MVP e outros Projetos\telecom.png
+O número de telefone e faça rotas que mandem para cada conteúdo do corpo 
+
+No corpo 
+Quem somos,
+onde nos encontrar 
+oq fazemos 
+e quantidade de tempo no mercado
+E pq nos escolher
+
+essas informações:
+Empresa de telecomunicações
+CONSULTOR CNPJ & CPF PLANOS MÓVEIS e FIXOS
+FIBRA ÓPTICA / LINK DEDICADO
+Migração CPF para CNPJ TUDO EM TELECOM
+16 ANOS EM 2026
+WhatsApp
+wa.me/message/VOAHQSVKS7YK01
+Camboriú
+
+Footer com informações do Produto 
+Instagram , Whatsapp e X e o Icone do site que está em C:\Users\Adm\Pictures\Programação\MVP e outros Projetos\telecom.png
